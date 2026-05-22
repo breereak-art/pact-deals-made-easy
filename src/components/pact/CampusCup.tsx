@@ -7,59 +7,61 @@ const board = [
 
 export function CampusCup() {
   return (
-    <section id="cup" className="max-w-7xl mx-auto px-6 py-24">
-      <div className="bg-lavender/20 border border-lavender/40 rounded-[2rem] p-10 lg:p-16 grid grid-cols-12 gap-10">
+    <section id="cup" className="bg-sand/60 border-y hairline">
+      <div className="max-w-6xl mx-auto px-6 py-32 grid grid-cols-12 gap-10">
         <div className="col-span-12 lg:col-span-6">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-ink/60 mb-4">
-            06 — Campus Prediction Cup
-          </div>
-          <h2 className="font-display text-5xl font-extrabold tracking-tighter text-ink leading-[0.95]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/45">
+            § 06 — Campus Prediction Cup
+          </span>
+          <h2 className="font-display text-5xl md:text-7xl text-ink leading-[0.95] mt-6">
             Your university,
             <br />
-            on the leaderboard.
+            <span className="italic">on the board.</span>
           </h2>
-          <p className="mt-6 text-lg text-ink/70 max-w-md">
-            Free to join. Points-based. Top earners split a ₦50,000–₦200,000
-            pool. Sponsored by campus brands and unions.
+          <p className="mt-8 text-lg text-ink/70 max-w-md leading-relaxed">
+            Free to enter. Points-based. The top earners split a
+            ₦50,000–₦200,000 pool. Sponsored by campus brands and unions.
           </p>
           <a
             href="#waitlist"
-            className="mt-8 inline-flex bg-ink text-parchment px-6 py-3 rounded-full font-display font-semibold text-sm tracking-wide uppercase hover:scale-[1.02] transition-transform"
+            className="mt-10 inline-flex items-center gap-3 text-[12px] tracking-[0.22em] uppercase text-ink border-b border-ink pb-1 hover:text-sage hover:border-sage transition-colors"
           >
-            Reserve your campus
+            Reserve your campus <span>→</span>
           </a>
         </div>
 
-        <div className="col-span-12 lg:col-span-6 bg-parchment rounded-2xl p-8 border border-ink/5">
-          <div className="flex items-center justify-between mb-6 pb-4 border-b border-ink/10">
-            <span className="font-display font-extrabold text-lg text-ink">
-              West Africa · S1
-            </span>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-sage">
-              Live
+        <div className="col-span-12 lg:col-span-6 bg-card border hairline p-8">
+          <div className="flex items-center justify-between mb-6 pb-4 border-b hairline">
+            <span className="font-display text-2xl text-ink">Leaderboard</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/45">
+              Week 12
             </span>
           </div>
-          <div className="flex flex-col">
-            {board.map((row) => (
-              <div
-                key={row.rank}
-                className="grid grid-cols-12 gap-2 items-center py-4 border-b border-ink/5 last:border-0"
+          <ul className="flex flex-col">
+            {board.map((b) => (
+              <li
+                key={b.rank}
+                className="flex items-baseline justify-between py-4 border-b hairline last:border-b-0"
               >
-                <span className="col-span-2 font-mono text-xs text-ink/40">
-                  {row.rank}
+                <span className="flex items-baseline gap-5">
+                  <span className="font-mono text-[11px] text-ink/40">
+                    {b.rank}
+                  </span>
+                  <span className="font-display text-2xl text-ink">
+                    {b.name}
+                  </span>
                 </span>
-                <span className="col-span-5 font-display font-semibold text-ink">
-                  {row.name}
+                <span className="flex items-baseline gap-4">
+                  <span className="font-mono text-[11px] text-sage">
+                    {b.change}
+                  </span>
+                  <span className="font-display text-xl text-ink tabular-nums">
+                    {b.pts}
+                  </span>
                 </span>
-                <span className="col-span-3 text-right font-mono text-sm text-ink">
-                  {row.pts}
-                </span>
-                <span className="col-span-2 text-right font-mono text-[10px] uppercase text-sage">
-                  {row.change}
-                </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
