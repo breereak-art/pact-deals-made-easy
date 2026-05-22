@@ -2,24 +2,24 @@ const items = [
   "iMessage",
   "WhatsApp",
   "Telegram",
-  "Paystack rails",
-  "Sub-60s onboarding",
-  "Zero redirects",
-  "Native polls for disputes",
-  "Director of Sports verified",
+  "Discord",
+  "Settled in chat",
+  "Built on Spectrum",
+  "Live May 2026",
+  "UNIUYO",
 ];
 
 export function Marquee() {
   return (
-    <div className="border-y border-ink/10 bg-parchment overflow-hidden py-5">
-      <div className="flex animate-marquee gap-12 whitespace-nowrap">
+    <div className="border-y hairline overflow-hidden py-4 bg-parchment">
+      <div className="flex animate-marquee gap-16 whitespace-nowrap">
         {[...items, ...items, ...items].map((t, i) => (
           <span
             key={i}
-            className="font-mono text-xs uppercase tracking-[0.2em] text-ink/60 flex items-center gap-12"
+            className="font-mono text-[11px] uppercase tracking-[0.28em] text-ink/55 flex items-center gap-16"
           >
             {t}
-            <span className="size-1 bg-ink/30 rounded-full" />
+            <span className="size-1 bg-ink/25 rounded-full" />
           </span>
         ))}
       </div>

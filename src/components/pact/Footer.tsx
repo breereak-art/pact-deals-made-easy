@@ -47,20 +47,23 @@ export function Footer() {
   }
 
   return (
-    <footer id="waitlist" className="py-24 px-6 border-t border-ink/5">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-ink/50 mb-4">
-          07 — Put it on Pact
+    <footer id="waitlist" className="py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex items-baseline justify-between mb-16">
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/45">
+            § 07 — Put it on Pact
+          </span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/45">
+            Launching · UNIUYO · May 2026
+          </span>
         </div>
-        <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 text-ink">
-          Firm by design.
+
+        <h2 className="font-display text-6xl md:text-8xl text-ink leading-[0.95] mb-16 max-w-4xl">
+          Firm <span className="italic">by design.</span>
         </h2>
-        <p className="text-lg text-ink/70 max-w-md mb-10">
-          The invisible layer that makes deals stick. Join the waitlist —
-          launching at UNIUYO May 2026.
-        </p>
+
         <form
-          className="flex flex-col sm:flex-row gap-3 w-full max-w-md"
+          className="flex flex-col sm:flex-row gap-0 w-full max-w-2xl border-b-2 border-ink"
           onSubmit={onSubmit}
         >
           <input
@@ -69,16 +72,18 @@ export function Footer() {
             onChange={(e) => setContact(e.target.value)}
             placeholder="campus email or whatsapp number"
             disabled={submitting || done}
-            className="flex-1 px-6 py-4 rounded-full border border-ink/10 bg-white/60 focus:outline-none focus:border-ink text-sm text-ink disabled:opacity-60"
+            className="flex-1 px-0 py-5 bg-transparent focus:outline-none text-lg text-ink placeholder:text-ink/35 disabled:opacity-60"
           />
           <button
             type="submit"
             disabled={submitting || done}
-            className="bg-ink text-parchment px-8 py-4 rounded-full font-display font-extrabold uppercase text-xs tracking-widest hover:scale-[1.02] transition-transform disabled:opacity-60"
+            className="px-2 py-5 text-[12px] tracking-[0.22em] uppercase text-ink hover:text-sage transition-colors disabled:opacity-60 flex items-center gap-3 self-end sm:self-auto"
           >
             {done ? "You're in ✓" : submitting ? "Saving…" : "Join the list"}
+            <span>→</span>
           </button>
         </form>
+
 
         <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12 text-left w-full">
           <div className="col-span-2">

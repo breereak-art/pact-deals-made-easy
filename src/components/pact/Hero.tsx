@@ -2,85 +2,74 @@ import { track } from "@/lib/analytics";
 
 export function Hero() {
   return (
-    <header id="top" className="relative max-w-7xl mx-auto px-6 pt-24 pb-28 overflow-hidden">
-      {/* Iridescent glow blobs */}
-      <div className="pointer-events-none absolute -top-20 -left-32 w-[480px] h-[480px] rounded-full bg-[#818cf8] opacity-30 blur-[140px]" />
-      <div className="pointer-events-none absolute top-40 -right-20 w-[520px] h-[520px] rounded-full bg-[#67e8f9] opacity-20 blur-[160px]" />
-      <div className="pointer-events-none absolute bottom-0 left-1/3 w-[360px] h-[360px] rounded-full bg-[#c4b5fd] opacity-20 blur-[120px]" />
+    <header id="top" className="max-w-6xl mx-auto px-6 pt-24 sm:pt-32 pb-24">
+      <div className="flex items-center gap-4 text-[11px] font-mono uppercase tracking-[0.22em] text-ink/55 mb-16">
+        <span>Vol. 01</span>
+        <span className="h-px w-10 bg-ink/30" />
+        <span>The Trust Layer for Chat</span>
+      </div>
 
-      <div className="relative z-10 grid grid-cols-12 gap-6 items-end">
-        <div className="col-span-12 lg:col-span-8 animate-fade-up">
-          <div className="inline-block px-3 py-1 rounded-full border border-ink/20 bg-ink/5 backdrop-blur-sm text-[10px] font-mono uppercase tracking-[0.25em] text-mint mb-8 -rotate-2">
-            The Trust Layer for Chat
-          </div>
+      <h1 className="font-display text-[14vw] sm:text-[10vw] lg:text-[8.5rem] leading-[0.95] tracking-tight text-ink animate-fade-up">
+        Deals made in chat.
+        <br />
+        <span className="italic relative inline-block">
+          Deals that get done.
+          <span className="absolute left-0 -bottom-1 sm:-bottom-2 h-[2px] w-full bg-sage origin-left animate-draw" />
+        </span>
+      </h1>
 
-          <h1 className="font-display text-[14vw] sm:text-[12vw] lg:text-[9rem] leading-[0.85] tracking-tight text-ink">
-            <span className="block -translate-x-1 -rotate-1">Deals made</span>
-            <span className="block text-iridescent translate-x-4 sm:translate-x-10">in chat.</span>
-            <span className="block text-right rotate-1 mt-2">Deals that</span>
-            <span className="block -mt-1">get done.</span>
-          </h1>
+      <div className="mt-16 grid grid-cols-12 gap-8 items-end">
+        <p className="col-span-12 md:col-span-7 text-xl md:text-2xl font-display text-ink/80 leading-snug max-w-[28ch]">
+          A quiet instrument that holds the stakes, sets the terms, and settles
+          the deal — inside the conversation it was made in.
+        </p>
 
-          <div className="mt-14 flex flex-col md:flex-row md:items-end gap-10">
-            <p className="max-w-md text-lg text-ink/70 leading-relaxed">
-              Escrow for freelancers and social predictions for students. Lock the
-              stakes, settle in the DMs — without leaving the conversation.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#waitlist"
-                onClick={() => track("cta_click", { location: "hero", target: "waitlist" })}
-                className="group relative bg-iridescent text-parchment px-8 py-4 font-display text-base uppercase tracking-widest hover:-translate-x-1 hover:-translate-y-1 transition-transform"
-              >
-                <span className="absolute inset-0 border-2 border-ink translate-x-1.5 translate-y-1.5 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform" />
-                <span className="relative">Join the waitlist</span>
-              </a>
-              <a
-                href="#how"
-                onClick={() => track("cta_click", { location: "hero", target: "how_it_works" })}
-                className="px-7 py-4 rounded-full border border-ink/25 text-ink font-display text-sm uppercase tracking-widest hover:bg-ink/5 transition-colors"
-              >
-                See how it works
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Floating trust badge */}
-        <div className="hidden lg:flex absolute top-20 right-8 z-20 size-40 border border-ink/15 rounded-full items-center justify-center rotate-12 backdrop-blur-sm bg-ink/5 animate-float-slow">
-          <div className="text-center text-[10px] tracking-[0.3em] uppercase font-bold text-mint">
-            Locked<br />in chat
-          </div>
+        <div className="col-span-12 md:col-span-5 md:justify-self-end flex flex-col gap-3 w-full md:w-auto">
+          <a
+            href="#waitlist"
+            onClick={() => track("cta_click", { location: "hero", target: "waitlist" })}
+            className="group inline-flex items-center justify-between gap-6 bg-ink text-parchment px-7 py-4 text-[13px] tracking-[0.18em] uppercase hover:bg-sage transition-colors"
+          >
+            <span>Join the waitlist</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <a
+            href="#how"
+            onClick={() => track("cta_click", { location: "hero", target: "how_it_works" })}
+            className="inline-flex items-center justify-between gap-6 text-[13px] tracking-[0.18em] uppercase text-ink/70 hover:text-ink px-7 py-4 border border-ink/15"
+          >
+            <span>How it works</span>
+            <span>↓</span>
+          </a>
         </div>
       </div>
 
-      {/* Broken-grid chat proof */}
-      <div className="relative mt-20 h-[520px] sm:h-[440px]">
-        <div className="absolute top-0 left-0 sm:left-8 w-[300px] p-5 bg-ink/5 backdrop-blur-xl border border-ink/15 rounded-3xl shadow-2xl -rotate-3 z-20 animate-float-slow">
-          <p className="text-ink/50 text-[10px] font-mono uppercase tracking-widest mb-2">DM · WhatsApp</p>
-          <p className="text-lg leading-snug text-ink">Can you design the logo by Friday? I&apos;ll pay ₦50k.</p>
-        </div>
-
-        <div className="absolute top-28 right-0 sm:right-12 w-[300px] p-5 bg-[#818cf8] text-white rounded-3xl shadow-2xl rotate-2 z-30 glow-violet">
-          <p className="text-white/70 text-[10px] font-mono uppercase tracking-widest mb-2">Reply</p>
-          <p className="text-lg leading-snug font-bold">Deal. Let&apos;s lock it with Pact.</p>
-          <div className="mt-3 pt-3 border-t border-white/20 flex justify-between items-center">
-            <span className="text-[10px] font-mono uppercase tracking-widest">Pact escrow #4402</span>
-            <div className="size-2 rounded-full bg-mint animate-pulse" />
+      {/* Editorial receipt card — singular, restrained */}
+      <figure className="mt-28 max-w-md mx-auto">
+        <div className="bg-card border hairline p-8 shadow-[0_1px_0_rgba(0,0,0,0.04),0_30px_60px_-30px_rgba(0,0,0,0.18)]">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.22em] text-ink/50">
+            <span>Pact № 4402</span>
+            <span className="flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-sage" />
+              In escrow
+            </span>
+          </div>
+          <div className="rule my-6" />
+          <div className="font-display text-4xl text-ink leading-none">
+            ₦50,000<span className="text-ink/40">.00</span>
+          </div>
+          <div className="mt-2 text-sm text-ink/60">
+            Logo & brand guide · due Friday
+          </div>
+          <div className="mt-6 flex justify-between text-[11px] font-mono text-ink/55">
+            <span>From: @jaden</span>
+            <span>To: @bisi_design</span>
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-1/2 sm:left-1/3 -translate-x-1/2 sm:translate-x-0 w-[320px] p-6 bg-parchment border border-mint/40 rounded-2xl shadow-2xl -rotate-2 z-10 glow-cyan">
-          <div className="text-[10px] font-mono text-mint font-bold uppercase tracking-widest mb-2">
-            Pact Escrow · Live
-          </div>
-          <div className="font-display text-3xl text-ink">₦50,000.00</div>
-          <div className="text-xs text-ink/60 mt-1">Awaiting milestone · Brand guidelines</div>
-          <div className="mt-4 h-1.5 w-full bg-ink/10 rounded-full overflow-hidden">
-            <div className="h-full bg-iridescent w-1/3" />
-          </div>
-        </div>
-      </div>
+        <figcaption className="mt-4 text-center text-[11px] font-mono uppercase tracking-[0.22em] text-ink/45">
+          Fig. 01 — A pact in repose
+        </figcaption>
+      </figure>
     </header>
   );
 }

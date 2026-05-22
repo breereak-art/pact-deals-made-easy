@@ -32,58 +32,53 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Pact brand tokens — Vapor Chrome (swapped: parchment = deep indigo base, ink = bright foreground) */
+  /* Pact editorial brand tokens */
   --color-ink: var(--ink);
   --color-parchment: var(--parchment);
   --color-sage: var(--sage);
   --color-lavender: var(--lavender);
   --color-sand: var(--sand);
-  --color-cyan: var(--cyan);
-  --color-mint: var(--mint);
 
-  --font-display: "Abril Fatface", ui-serif, Georgia, serif;
-  --font-body: "Cabin", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.5rem;
 
-  /* Vapor Chrome palette (oklch) */
-  --parchment: oklch(0.16 0.04 270);            /* deep indigo base (was light) */
-  --ink: oklch(0.97 0.01 250);                  /* near-white foreground */
-  --lavender: oklch(0.82 0.09 295);             /* #c4b5fd */
-  --sage: oklch(0.83 0.13 200);                 /* cyan #67e8f9 — repurposed */
-  --cyan: oklch(0.83 0.13 200);
-  --mint: oklch(0.9 0.1 195);                   /* #a5f3fc */
-  --indigo: oklch(0.68 0.16 280);               /* #818cf8 */
-  --sand: oklch(0.24 0.05 270);                 /* mid surface */
+  /* Editorial palette — cream / ink / forest */
+  --parchment: oklch(0.965 0.012 85);     /* warm cream background */
+  --ink: oklch(0.16 0.015 270);           /* deep near-black */
+  --sage: oklch(0.42 0.08 155);           /* deep forest accent */
+  --lavender: oklch(0.88 0.025 50);       /* dusty rose, subtle */
+  --sand: oklch(0.92 0.018 85);           /* surface */
 
   --background: var(--parchment);
   --foreground: var(--ink);
-  --card: oklch(0.2 0.04 270);
+  --card: oklch(0.985 0.008 85);
   --card-foreground: var(--ink);
   --popover: var(--parchment);
   --popover-foreground: var(--ink);
-  --primary: var(--lavender);
+  --primary: var(--ink);
   --primary-foreground: var(--parchment);
   --secondary: var(--sand);
   --secondary-foreground: var(--ink);
   --muted: var(--sand);
-  --muted-foreground: oklch(0.7 0.03 270);
-  --accent: var(--cyan);
+  --muted-foreground: oklch(0.45 0.015 270);
+  --accent: var(--sage);
   --accent-foreground: var(--parchment);
-  --destructive: oklch(0.65 0.22 27);
-  --destructive-foreground: var(--ink);
-  --border: oklch(0.97 0.01 250 / 0.1);
-  --input: oklch(0.97 0.01 250 / 0.12);
-  --ring: var(--lavender);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: var(--parchment);
+  --border: oklch(0.16 0.015 270 / 0.12);
+  --input: oklch(0.16 0.015 270 / 0.14);
+  --ring: var(--ink);
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -92,26 +87,24 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2deg); }
+@keyframes draw-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @layer utilities {
-  .animate-fade-up { animation: fade-up 0.8s var(--ease-out-expo) both; }
-  .animate-marquee { animation: marquee 40s linear infinite; }
-  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-  .text-iridescent {
-    background: linear-gradient(110deg, #c4b5fd 0%, #818cf8 30%, #67e8f9 60%, #a5f3fc 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .animate-fade-up { animation: fade-up 1s var(--ease-out-expo) both; }
+  .animate-marquee { animation: marquee 60s linear infinite; }
+  .animate-draw {
+    transform-origin: left;
+    animation: draw-underline 1.4s var(--ease-out-expo) 0.4s both;
   }
-  .bg-iridescent {
-    background: linear-gradient(110deg, #c4b5fd 0%, #818cf8 35%, #67e8f9 75%, #a5f3fc 100%);
+  .rule {
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.18;
   }
-  .glow-violet { box-shadow: 0 20px 80px -20px oklch(0.68 0.16 280 / 0.55); }
-  .glow-cyan { box-shadow: 0 20px 80px -20px oklch(0.83 0.13 200 / 0.45); }
+  .hairline { border-color: oklch(0.16 0.015 270 / 0.15); }
 }
 
 @layer base {
@@ -122,10 +115,11 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
     font-weight: 400;
+    letter-spacing: -0.015em;
   }
 }

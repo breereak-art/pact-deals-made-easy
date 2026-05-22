@@ -1,58 +1,64 @@
 const tiers = [
   {
-    n: "01",
+    n: "I.",
     title: "Mainstream sports",
-    body: "Settled automatically by sports API. No human needed.",
+    body: "Settled automatically by sports API. No human in the loop.",
   },
   {
-    n: "02",
+    n: "II.",
     title: "Campus & local games",
-    body: "Director of Sports confirms. One message, funds release.",
+    body: "The Director of Sports confirms. One message, funds release.",
   },
   {
-    n: "03",
+    n: "III.",
     title: "Dares & challenges",
-    body: "A nominated friend confirms. Their reputation is on the line.",
+    body: "A nominated friend confirms. Their reputation is the bond.",
   },
   {
-    n: "04",
+    n: "IV.",
     title: "Dispute fallback",
-    body: "Native group poll. Majority rules. Or funds return on timer.",
+    body: "A native group poll. Majority rules — or funds return on timer.",
   },
 ];
 
 export function Arbitration() {
   return (
-    <section id="arbitration" className="bg-ink text-parchment py-24 paper-grain">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-12 gap-8 mb-16">
-          <div className="col-span-12 lg:col-span-7">
-            <div className="text-[10px] font-mono uppercase tracking-widest text-sage mb-4">
-              04 — Arbitration & resolution
-            </div>
-            <h2 className="font-display text-5xl font-extrabold tracking-tighter">
-              Four tiers. No ambiguity.
-            </h2>
-          </div>
-          <p className="col-span-12 lg:col-span-5 text-lg text-parchment/60 self-end">
-            Every Pact has a resolution path defined before money locks. Nothing
-            hangs in limbo. Nothing gets frozen.
-          </p>
+    <section id="arbitration" className="bg-ink text-parchment py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-baseline justify-between mb-20">
+          <h2 className="font-display text-5xl md:text-7xl text-parchment max-w-2xl">
+            Four resolutions.
+            <br />
+            <span className="italic">Never ambiguity.</span>
+          </h2>
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-parchment/45">
+            § 04 — Arbitration
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-parchment/10 rounded-3xl overflow-hidden">
-          {tiers.map((t) => (
+        <p className="text-lg text-parchment/70 max-w-xl mb-20 leading-relaxed">
+          Every pact carries its resolution path before the money locks.
+          Nothing hangs in limbo. Nothing gets frozen.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-parchment/15">
+          {tiers.map((t, i) => (
             <div
               key={t.n}
-              className="bg-ink p-8 flex flex-col gap-4 min-h-[240px] hover:bg-parchment/5 transition-colors"
+              className={
+                "py-10 md:px-8 border-b border-parchment/15 " +
+                (i < 3 ? "lg:border-r border-parchment/15" : "") +
+                " " +
+                (i === 0 ? "md:pl-0" : "")
+              }
             >
-              <span className="font-mono text-[10px] uppercase tracking-widest text-sage">
-                Tier {t.n}
-              </span>
-              <h3 className="font-display text-2xl font-extrabold text-parchment leading-tight">
+              <span className="font-display text-3xl text-sage">{t.n}</span>
+              <h3 className="font-display text-2xl text-parchment mt-5 mb-4 leading-tight">
                 {t.title}
               </h3>
-              <p className="text-sm text-parchment/60 mt-auto">{t.body}</p>
+              <p className="text-sm text-parchment/65 leading-relaxed">
+                {t.body}
+              </p>
             </div>
           ))}
         </div>
