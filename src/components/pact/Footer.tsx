@@ -85,42 +85,41 @@ export function Footer() {
         </form>
 
 
-        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12 text-left w-full">
+        <div className="mt-32 pt-12 border-t hairline grid grid-cols-2 md:grid-cols-4 gap-10 text-left w-full">
           <div className="col-span-2">
-            <span className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink">
-              Pact
-            </span>
-            <p className="mt-4 text-ink/60 max-w-xs text-sm">
-              The trust layer for messaging. Lock the stakes. Settle the deal.
-              Never leave the chat.
+            <span className="font-display text-3xl text-ink leading-none">Pact</span>
+            <p className="mt-5 text-ink/65 max-w-xs text-sm leading-relaxed">
+              A quiet instrument that holds the stakes, sets the terms, and
+              settles the deal — inside the chat it was made in.
             </p>
           </div>
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-widest text-ink/40 mb-4">
+            <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-ink/40 mb-5">
               Products
             </div>
-            <ul className="text-sm flex flex-col gap-2 font-medium text-ink">
+            <ul className="text-sm flex flex-col gap-2.5 text-ink/80">
               <li><a href="#pay" className="hover:text-sage">Pact Pay</a></li>
-              <li><a href="#bet" className="hover:text-lavender">Pact Bet</a></li>
-              <li><a href="#cup" className="hover:opacity-60">Campus Cup</a></li>
+              <li><a href="#bet" className="hover:text-sage">Pact Bet</a></li>
+              <li><a href="#cup" className="hover:text-sage">Campus Cup</a></li>
             </ul>
           </div>
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-widest text-ink/40 mb-4">
+            <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-ink/40 mb-5">
               Trust
             </div>
-            <ul className="text-sm flex flex-col gap-2 font-medium text-ink">
-              <li><a href="#arbitration" className="hover:opacity-60">Arbitration</a></li>
-              <li><a href="#" className="hover:opacity-60">Safety guide</a></li>
-              <li><a href="#" className="hover:opacity-60">Privacy</a></li>
+            <ul className="text-sm flex flex-col gap-2.5 text-ink/80">
+              <li><a href="#arbitration" className="hover:text-sage">Arbitration</a></li>
+              <li><a href="#" className="hover:text-sage">Safety guide</a></li>
+              <li><a href="#" className="hover:text-sage">Privacy</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-ink/10 w-full flex flex-wrap items-center justify-between gap-4 text-[10px] font-mono uppercase tracking-widest text-ink/40">
+        <div className="mt-16 pt-8 border-t hairline flex flex-wrap items-center justify-between gap-4 text-[10px] font-mono uppercase tracking-[0.22em] text-ink/45">
           <span>© 2026 Pact · Built on Spectrum</span>
           <span>Lagos · UNIUYO · Globally</span>
         </div>
+
       </div>
     </footer>
   );
