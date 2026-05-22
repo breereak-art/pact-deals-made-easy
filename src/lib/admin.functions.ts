@@ -62,16 +62,17 @@ export const getAdminMetrics = createServerFn({ method: "GET" })
       waitlist_success: new Set(),
     };
 
+    const trackedKeys = ["page_view", "cta_click", "waitlist_submit", "waitlist_success"] as const;
+    type TrackedKey = (typeof trackedKeys)[number];
+    const isTracked = (n: string): n is TrackedKey => (trackedKeys as readonly string[]).includes(n);
+
     for (const ev of eventsRes.data ?? []) {
       const key = (ev.created_at as string).slice(0, 10);
       const bucket = days[key];
       if (!bucket) continue;
-      if (ev.name in bucket) {
-        (bucket as Record<string, number | string>)[ev.name] =
-          ((bucket as Record<string, number>)[ev.name] ?? 0) + 1;
-      }
-      if (ev.name in totals) {
-        totals[ev.name as keyof typeof totals] += 1;
+      if (isTracked(ev.name)) {
+        bucket[ev.name] += 1;
+        totals[ev.name] += 1;
         if (ev.session_id) sessionsByEvent[ev.name].add(ev.session_id);
       }
     }
