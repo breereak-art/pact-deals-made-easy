@@ -19,12 +19,14 @@ export function Hero() {
         <div className="mt-10 flex flex-wrap gap-3">
           <a
             href="#waitlist"
+            onClick={() => track("cta_click", { location: "hero", target: "waitlist" })}
             className="bg-ink text-parchment px-6 py-3 rounded-full font-display font-semibold text-sm tracking-wide uppercase hover:scale-[1.02] transition-transform"
           >
             Join the waitlist
           </a>
           <a
             href="#how"
+            onClick={() => track("cta_click", { location: "hero", target: "how_it_works" })}
             className="px-6 py-3 rounded-full border border-ink/15 font-display font-semibold text-sm tracking-wide uppercase text-ink hover:bg-ink/5 transition-colors"
           >
             See how it works
