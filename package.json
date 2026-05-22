@@ -16,6 +16,8 @@
     "@fontsource/abril-fatface": "^5.2.7",
     "@fontsource/cabin": "^5.2.8",
     "@fontsource/figtree": "^5.2.10",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@fontsource/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/outfit": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
