@@ -32,15 +32,17 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Pact brand tokens */
+  /* Pact brand tokens — Vapor Chrome (swapped: parchment = deep indigo base, ink = bright foreground) */
   --color-ink: var(--ink);
   --color-parchment: var(--parchment);
   --color-sage: var(--sage);
   --color-lavender: var(--lavender);
   --color-sand: var(--sand);
+  --color-cyan: var(--cyan);
+  --color-mint: var(--mint);
 
-  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Abril Fatface", ui-serif, Georgia, serif;
+  --font-body: "Cabin", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -49,78 +51,72 @@
 :root {
   --radius: 1rem;
 
-  /* Pact palette (oklch) */
-  --ink: oklch(0.22 0.03 265);
-  --parchment: oklch(0.96 0.025 90);
-  --sage: oklch(0.72 0.05 145);
-  --lavender: oklch(0.82 0.06 305);
-  --sand: oklch(0.92 0.03 85);
+  /* Vapor Chrome palette (oklch) */
+  --parchment: oklch(0.16 0.04 270);            /* deep indigo base (was light) */
+  --ink: oklch(0.97 0.01 250);                  /* near-white foreground */
+  --lavender: oklch(0.82 0.09 295);             /* #c4b5fd */
+  --sage: oklch(0.83 0.13 200);                 /* cyan #67e8f9 — repurposed */
+  --cyan: oklch(0.83 0.13 200);
+  --mint: oklch(0.9 0.1 195);                   /* #a5f3fc */
+  --indigo: oklch(0.68 0.16 280);               /* #818cf8 */
+  --sand: oklch(0.24 0.05 270);                 /* mid surface */
 
-  /* Map shadcn tokens onto Pact palette */
   --background: var(--parchment);
   --foreground: var(--ink);
-  --card: oklch(1 0 0);
+  --card: oklch(0.2 0.04 270);
   --card-foreground: var(--ink);
   --popover: var(--parchment);
   --popover-foreground: var(--ink);
-  --primary: var(--ink);
+  --primary: var(--lavender);
   --primary-foreground: var(--parchment);
   --secondary: var(--sand);
   --secondary-foreground: var(--ink);
   --muted: var(--sand);
-  --muted-foreground: oklch(0.45 0.03 265);
-  --accent: var(--sage);
+  --muted-foreground: oklch(0.7 0.03 270);
+  --accent: var(--cyan);
   --accent-foreground: var(--parchment);
-  --destructive: oklch(0.6 0.22 27);
-  --destructive-foreground: var(--parchment);
-  --border: oklch(0.22 0.03 265 / 0.08);
-  --input: oklch(0.22 0.03 265 / 0.1);
-  --ring: var(--ink);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: var(--ink);
+  --border: oklch(0.97 0.01 250 / 0.1);
+  --input: oklch(0.97 0.01 250 / 0.12);
+  --ring: var(--lavender);
 }
 
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
 }
 
 @layer utilities {
-  .animate-fade-up {
-    animation: fade-up 0.8s var(--ease-out-expo) both;
+  .animate-fade-up { animation: fade-up 0.8s var(--ease-out-expo) both; }
+  .animate-marquee { animation: marquee 40s linear infinite; }
+  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+  .text-iridescent {
+    background: linear-gradient(110deg, #c4b5fd 0%, #818cf8 30%, #67e8f9 60%, #a5f3fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .animate-marquee {
-    animation: marquee 40s linear infinite;
+  .bg-iridescent {
+    background: linear-gradient(110deg, #c4b5fd 0%, #818cf8 35%, #67e8f9 75%, #a5f3fc 100%);
   }
-  .paper-grain {
-    background-image: radial-gradient(
-        oklch(0.22 0.03 265 / 0.04) 1px,
-        transparent 1px
-      );
-    background-size: 6px 6px;
-  }
+  .glow-violet { box-shadow: 0 20px 80px -20px oklch(0.68 0.16 280 / 0.55); }
+  .glow-cyan { box-shadow: 0 20px 80px -20px oklch(0.83 0.13 200 / 0.45); }
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -129,6 +125,7 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    font-weight: 400;
   }
 }
