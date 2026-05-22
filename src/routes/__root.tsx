@@ -7,6 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 
@@ -95,10 +96,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const plausibleDomain =
+    (import.meta.env.VITE_PLAUSIBLE_DOMAIN as string | undefined) ?? "pact.lovable.app";
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          defer
+          data-domain={plausibleDomain}
+          src="https://plausible.io/js/script.tagged-events.js"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};",
+          }}
+        />
       </head>
       <body>
         {children}
@@ -114,6 +128,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }

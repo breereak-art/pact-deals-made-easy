@@ -1,4 +1,51 @@
+import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { track } from "@/lib/analytics";
+import { joinWaitlist } from "@/lib/analytics.functions";
+import { toast } from "sonner";
+
 export function Footer() {
+  const [contact, setContact] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+  const submit = useServerFn(joinWaitlist);
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const value = contact.trim();
+    if (value.length < 3) {
+      toast.error("Enter your email or WhatsApp number.");
+      return;
+    }
+    setSubmitting(true);
+    track("waitlist_submit", { source: "footer" });
+    try {
+      const res = await submit({
+        data: {
+          contact: value,
+          source: "footer",
+          referrer: typeof document !== "undefined" ? document.referrer : null,
+          userAgent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+        },
+      });
+      if (res.ok) {
+        setDone(true);
+        setContact("");
+        track("waitlist_success", { source: "footer" });
+        toast.success("You're on the list. See you at UNIUYO.");
+      } else {
+        track("waitlist_error", { source: "footer", reason: res.error ?? "unknown" });
+        toast.error(res.error ?? "Could not save. Try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      track("waitlist_error", { source: "footer", reason: "network" });
+      toast.error("Network error. Try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <footer id="waitlist" className="py-24 px-6 border-t border-ink/5">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
@@ -14,18 +61,22 @@ export function Footer() {
         </p>
         <form
           className="flex flex-col sm:flex-row gap-3 w-full max-w-md"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={onSubmit}
         >
           <input
-            type="email"
+            type="text"
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
             placeholder="campus email or whatsapp number"
-            className="flex-1 px-6 py-4 rounded-full border border-ink/10 bg-white/60 focus:outline-none focus:border-ink text-sm text-ink"
+            disabled={submitting || done}
+            className="flex-1 px-6 py-4 rounded-full border border-ink/10 bg-white/60 focus:outline-none focus:border-ink text-sm text-ink disabled:opacity-60"
           />
           <button
             type="submit"
-            className="bg-ink text-parchment px-8 py-4 rounded-full font-display font-extrabold uppercase text-xs tracking-widest hover:scale-[1.02] transition-transform"
+            disabled={submitting || done}
+            className="bg-ink text-parchment px-8 py-4 rounded-full font-display font-extrabold uppercase text-xs tracking-widest hover:scale-[1.02] transition-transform disabled:opacity-60"
           >
-            Join the list
+            {done ? "You're in ✓" : submitting ? "Saving…" : "Join the list"}
           </button>
         </form>
 
