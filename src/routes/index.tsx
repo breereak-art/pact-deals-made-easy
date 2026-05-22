@@ -1,26 +1,47 @@
 import { createFileRoute } from "@tanstack/react-router";
+import "@/components/pact/fonts";
+import { Nav } from "@/components/pact/Nav";
+import { Hero } from "@/components/pact/Hero";
+import { Marquee } from "@/components/pact/Marquee";
+import { Products } from "@/components/pact/Products";
+import { BetTypes } from "@/components/pact/BetTypes";
+import { Arbitration } from "@/components/pact/Arbitration";
+import { Settlements } from "@/components/pact/Settlements";
+import { CampusCup } from "@/components/pact/CampusCup";
+import { Footer } from "@/components/pact/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Pact — The trust layer for messaging" },
+      {
+        name: "description",
+        content:
+          "Pact locks money, sets conditions, and releases payment automatically inside the chat. Escrow for freelancers, social predictions for campus.",
+      },
+      { property: "og:title", content: "Pact — Deals made in chat. Deals that get done." },
+      {
+        property: "og:description",
+        content:
+          "Escrow for freelancers. Social predictions for students. Secured in the DMs, settled on Pact.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="min-h-screen bg-parchment text-ink font-body selection:bg-lavender/40">
+      <Nav />
+      <Hero />
+      <Marquee />
+      <Products />
+      <BetTypes />
+      <Arbitration />
+      <Settlements />
+      <CampusCup />
+      <Footer />
+    </main>
+  );
 }
