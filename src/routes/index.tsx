@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import "@/components/pact/fonts";
 import { Nav } from "@/components/pact/Nav";
 import { Hero } from "@/components/pact/Hero";
@@ -9,6 +10,7 @@ import { Arbitration } from "@/components/pact/Arbitration";
 import { Settlements } from "@/components/pact/Settlements";
 import { CampusCup } from "@/components/pact/CampusCup";
 import { Footer } from "@/components/pact/Footer";
+import { track } from "@/lib/analytics";
 
 export const Route = createFileRoute("/")({
   component: Index,
