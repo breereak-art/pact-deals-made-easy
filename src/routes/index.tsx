@@ -33,6 +33,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    track("page_view", { path: "/" });
+  }, []);
   return (
     <main className="min-h-screen bg-parchment text-ink font-body selection:bg-lavender/40">
       <Nav />
