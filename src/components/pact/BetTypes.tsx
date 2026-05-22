@@ -35,9 +35,8 @@ export function BetTypes() {
           </h2>
         </div>
         <p className="col-span-12 lg:col-span-6 lg:col-start-7 text-lg text-ink/70 self-end">
-          Parlour has no real escrow. Betswap has no casual users. Nobody covers
-          local games. Pact does all three — in the chat where the argument
-          already lives.
+          From the silliest dares to a Saturday derby — Pact backs every kind of
+          claim, in the chat where the argument already lives.
         </p>
       </div>
 

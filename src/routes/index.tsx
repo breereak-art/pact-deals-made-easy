@@ -37,7 +37,7 @@ function Index() {
     track("page_view", { path: "/" });
   }, []);
   return (
-    <main className="min-h-screen bg-parchment text-ink font-body selection:bg-lavender/40">
+    <main className="min-h-screen overflow-x-hidden bg-parchment text-ink font-body selection:bg-mint/40 selection:text-parchment">
       <Nav />
       <Hero />
       <Marquee />
