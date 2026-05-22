@@ -14,7 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analytics_events: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          props: Json
+          referrer: string | null
+          session_id: string | null
+          url: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          props?: Json
+          referrer?: string | null
+          session_id?: string | null
+          url?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          props?: Json
+          referrer?: string | null
+          session_id?: string | null
+          url?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      waitlist_signups: {
+        Row: {
+          contact: string
+          created_at: string
+          id: string
+          referrer: string | null
+          source: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          contact: string
+          created_at?: string
+          id?: string
+          referrer?: string | null
+          source?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          contact?: string
+          created_at?: string
+          id?: string
+          referrer?: string | null
+          source?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
