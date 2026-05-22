@@ -1,4 +1,4 @@
-export function Hero() {
+import { track } from "@/lib/analytics";
   return (
     <header id="top" className="max-w-7xl mx-auto px-6 pt-20 pb-16 grid grid-cols-12 gap-8 items-end">
       <div className="col-span-12 lg:col-span-7 animate-fade-up">
