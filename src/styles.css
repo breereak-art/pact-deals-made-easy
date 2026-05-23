@@ -52,8 +52,11 @@
   /* Editorial palette — cream / ink / forest */
   --parchment: oklch(0.965 0.012 85);     /* warm cream background */
   --ink: oklch(0.16 0.015 270);           /* deep near-black */
-  --sage: oklch(0.42 0.08 155);           /* deep forest accent */
-  --lavender: oklch(0.88 0.025 50);       /* dusty rose, subtle */
+  --sage: oklch(0.62 0.10 165);           /* soft modern green */
+  --sage-deep: oklch(0.42 0.09 160);      /* deep forest */
+  --sage-mist: oklch(0.88 0.05 160);      /* pale mint mist */
+  --lavender: oklch(0.86 0.04 340);       /* soft blush */
+  --sky: oklch(0.84 0.05 230);            /* dreamy sky blue */
   --sand: oklch(0.92 0.018 85);           /* surface */
 
   --background: var(--parchment);
