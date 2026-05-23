@@ -8,14 +8,19 @@ export const Route = createFileRoute("/api/public/spectrum/webhook")({
         const signature = request.headers.get("x-photon-signature") ?? request.headers.get("x-webhook-signature");
         const body = await request.text();
 
-        // Verify webhook signature if secret is configured
+        // Webhook signature verification is REQUIRED. Reject if secret missing.
         const webhookSecret = process.env.PHOTON_WEBHOOK_SECRET;
-        if (webhookSecret) {
-          const expected = createHmac("sha256", webhookSecret).update(body).digest("hex");
-          if (!signature || !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
-            return new Response("Invalid signature", { status: 401 });
-          }
+        if (!webhookSecret) {
+          console.error("[spectrum:webhook] PHOTON_WEBHOOK_SECRET not configured");
+          return new Response("Webhook secret not configured", { status: 500 });
         }
+        const expected = createHmac("sha256", webhookSecret).update(body).digest("hex");
+        const sigBuf = signature ? Buffer.from(signature) : Buffer.alloc(0);
+        const expBuf = Buffer.from(expected);
+        if (sigBuf.length !== expBuf.length || !timingSafeEqual(sigBuf, expBuf)) {
+          return new Response("Invalid signature", { status: 401 });
+        }
+
 
         let payload;
         try {
