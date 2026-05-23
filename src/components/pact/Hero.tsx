@@ -6,22 +6,22 @@ export function Hero() {
       <div className="flex items-center gap-4 text-[11px] font-mono uppercase tracking-[0.22em] text-ink/55 mb-16">
         <span>Vol. 01</span>
         <span className="h-px w-10 bg-ink/30" />
-        <span>The Trust Layer for Chat</span>
+        <span>Meet Pact — she holds the stakes</span>
       </div>
 
       <h1 className="font-display text-[14vw] sm:text-[10vw] lg:text-[8.5rem] leading-[0.95] tracking-tight text-ink animate-fade-up">
-        Deals made in chat.
+        Talk is cheap.
         <br />
         <span className="italic relative inline-block">
-          Deals that get done.
+          Pact isn’t.
           <span className="absolute left-0 -bottom-1 sm:-bottom-2 h-[2px] w-full bg-sage origin-left animate-draw" />
         </span>
       </h1>
 
       <div className="mt-16 grid grid-cols-12 gap-8 items-end">
-        <p className="col-span-12 md:col-span-7 text-xl md:text-2xl font-display text-ink/80 leading-snug max-w-[28ch]">
-          A quiet instrument that holds the stakes, sets the terms, and settles
-          the deal — inside the conversation it was made in.
+        <p className="col-span-12 md:col-span-7 text-xl md:text-2xl font-display text-ink/80 leading-snug max-w-[30ch]">
+          She holds your money, sets the terms, and settles the deal —
+          all without leaving the chat it was made in.
         </p>
 
         <div className="col-span-12 md:col-span-5 md:justify-self-end flex flex-col gap-3 w-full md:w-auto">
@@ -30,15 +30,15 @@ export function Hero() {
             onClick={() => track("cta_click", { location: "hero", target: "waitlist" })}
             className="group inline-flex items-center justify-between gap-6 bg-ink text-parchment px-7 py-4 text-[13px] tracking-[0.18em] uppercase hover:bg-sage transition-colors"
           >
-            <span>Join the waitlist</span>
+            <span>Try Pact</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
           <a
-            href="#how"
+            href="#products"
             onClick={() => track("cta_click", { location: "hero", target: "how_it_works" })}
             className="inline-flex items-center justify-between gap-6 text-[13px] tracking-[0.18em] uppercase text-ink/70 hover:text-ink px-7 py-4 border border-ink/15"
           >
-            <span>How it works</span>
+            <span>Meet her first</span>
             <span>↓</span>
           </a>
         </div>

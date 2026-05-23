@@ -2,7 +2,7 @@ const tiers = [
   {
     n: "I.",
     title: "Mainstream sports",
-    body: "Settled automatically by sports API. No human in the loop.",
+    body: "Settled automatically by sports API. Nobody has to argue.",
   },
   {
     n: "II.",
@@ -12,7 +12,7 @@ const tiers = [
   {
     n: "III.",
     title: "Dares & challenges",
-    body: "A nominated friend confirms. Their reputation is the bond.",
+    body: "A nominated friend calls it. Their reputation is the bond.",
   },
   {
     n: "IV.",
@@ -27,9 +27,9 @@ export function Arbitration() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-baseline justify-between mb-20">
           <h2 className="font-display text-5xl md:text-7xl text-parchment max-w-2xl">
-            Four resolutions.
+            No drama.
             <br />
-            <span className="italic">Never ambiguity.</span>
+            <span className="italic">No “my brother sent it”.</span>
           </h2>
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-parchment/45">
             § 04 — Arbitration
@@ -38,7 +38,7 @@ export function Arbitration() {
 
         <p className="text-lg text-parchment/70 max-w-xl mb-20 leading-relaxed">
           Every pact carries its resolution path before the money locks.
-          Nothing hangs in limbo. Nothing gets frozen.
+          Nothing hangs in limbo. Nothing gets frozen. Nobody plays dumb.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-parchment/15">

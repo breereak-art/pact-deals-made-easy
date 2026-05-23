@@ -2,20 +2,20 @@ const types = [
   {
     n: "01",
     title: "Dares & challenges",
-    body: "“I bet you can’t drink garri with only your saliva.”",
-    meta: "A nominated friend arbitrates. Real stakes. Real consequences.",
+    body: "“I bet you can’t finish that plate of garri.”",
+    meta: "A nominated friend calls it. Real stakes. Real consequences.",
   },
   {
     n: "02",
     title: "Predictions",
     body: "“CSC boys beat Engineering on Saturday — ₦5k.”",
-    meta: "Open-book matching. The Director of Sports confirms the outcome.",
+    meta: "Open-book matching. The Director of Sports calls the score.",
   },
   {
     n: "03",
     title: "Mainstream sports",
     body: "“₦2k says Real Madrid wins tonight.”",
-    meta: "Settled automatically by API. No human needed.",
+    meta: "Settled automatically by API. Nobody has to argue.",
   },
 ];
 
