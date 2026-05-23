@@ -14,6 +14,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminAdminRouteImport } from './routes/_admin/admin'
+import { Route as ApiPublicSpectrumWebhookRouteImport } from './routes/api/public/spectrum/webhook'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -39,18 +40,26 @@ const AdminAdminRoute = AdminAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AdminRoute,
 } as any)
+const ApiPublicSpectrumWebhookRoute =
+  ApiPublicSpectrumWebhookRouteImport.update({
+    id: '/api/public/spectrum/webhook',
+    path: '/api/public/spectrum/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AdminAdminRoute
+  '/api/public/spectrum/webhook': typeof ApiPublicSpectrumWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AdminAdminRoute
+  '/api/public/spectrum/webhook': typeof ApiPublicSpectrumWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,13 +68,31 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_admin/admin': typeof AdminAdminRoute
+  '/api/public/spectrum/webhook': typeof ApiPublicSpectrumWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/sitemap.xml' | '/admin'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/sitemap.xml'
+    | '/admin'
+    | '/api/public/spectrum/webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/sitemap.xml' | '/admin'
-  id: '__root__' | '/' | '/_admin' | '/login' | '/sitemap.xml' | '/_admin/admin'
+  to:
+    | '/'
+    | '/login'
+    | '/sitemap.xml'
+    | '/admin'
+    | '/api/public/spectrum/webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/_admin'
+    | '/login'
+    | '/sitemap.xml'
+    | '/_admin/admin'
+    | '/api/public/spectrum/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -73,6 +100,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   LoginRoute: typeof LoginRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiPublicSpectrumWebhookRoute: typeof ApiPublicSpectrumWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -112,6 +140,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/api/public/spectrum/webhook': {
+      id: '/api/public/spectrum/webhook'
+      path: '/api/public/spectrum/webhook'
+      fullPath: '/api/public/spectrum/webhook'
+      preLoaderRoute: typeof ApiPublicSpectrumWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -130,6 +165,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   LoginRoute: LoginRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiPublicSpectrumWebhookRoute: ApiPublicSpectrumWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
