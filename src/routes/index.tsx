@@ -12,6 +12,7 @@ import { Testimonials } from "@/components/pact/Testimonials";
 import { CampusCup } from "@/components/pact/CampusCup";
 import { Press } from "@/components/pact/Press";
 import { Faq } from "@/components/pact/Faq";
+import { GetPact } from "@/components/pact/GetPact";
 import { Footer } from "@/components/pact/Footer";
 import { track } from "@/lib/analytics";
 
@@ -52,6 +53,7 @@ function Index() {
       <CampusCup />
       <Press />
       <Faq />
+      <GetPact />
       <Footer />
     </main>
   );
