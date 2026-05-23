@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "@/components/pact/fonts";
 import { Nav } from "@/components/pact/Nav";
 import { Hero } from "@/components/pact/Hero";
+import { PhoneBreakout } from "@/components/pact/PhoneBreakout";
 import { Marquee } from "@/components/pact/Marquee";
 import { Products } from "@/components/pact/Products";
 import { BetTypes } from "@/components/pact/BetTypes";
@@ -44,6 +45,7 @@ function Index() {
     <main className="min-h-screen overflow-x-hidden bg-parchment text-ink font-body selection:bg-ink selection:text-parchment">
       <Nav />
       <Hero />
+      <PhoneBreakout />
       <Marquee />
       <Products />
       <BetTypes />
