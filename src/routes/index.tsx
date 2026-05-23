@@ -8,7 +8,10 @@ import { Products } from "@/components/pact/Products";
 import { BetTypes } from "@/components/pact/BetTypes";
 import { Arbitration } from "@/components/pact/Arbitration";
 import { Settlements } from "@/components/pact/Settlements";
+import { Testimonials } from "@/components/pact/Testimonials";
 import { CampusCup } from "@/components/pact/CampusCup";
+import { Press } from "@/components/pact/Press";
+import { Faq } from "@/components/pact/Faq";
 import { Footer } from "@/components/pact/Footer";
 import { track } from "@/lib/analytics";
 
@@ -16,17 +19,17 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Pact — The trust layer for messaging" },
+      { title: "Pact — Talk is cheap. Pact isn’t." },
       {
         name: "description",
         content:
-          "Pact locks money, sets conditions, and releases payment automatically inside the chat. Escrow for freelancers, social predictions for campus.",
+          "Pact holds the stakes, sets the terms, and settles the deal — inside the chat it was made in. Escrow for freelancers, social stakes for the group chat.",
       },
-      { property: "og:title", content: "Pact — Deals made in chat. Deals that get done." },
+      { property: "og:title", content: "Pact — Talk is cheap. Pact isn’t." },
       {
         property: "og:description",
         content:
-          "Escrow for freelancers. Social predictions for students. Secured in the DMs, settled on Pact.",
+          "She holds the money, sets the terms, and settles the deal — without leaving the chat.",
       },
     ],
   }),
@@ -45,7 +48,10 @@ function Index() {
       <BetTypes />
       <Arbitration />
       <Settlements />
+      <Testimonials />
       <CampusCup />
+      <Press />
+      <Faq />
       <Footer />
     </main>
   );

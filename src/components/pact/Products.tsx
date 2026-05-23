@@ -4,7 +4,7 @@ const products = [
     num: "I.",
     kicker: "For freelancers",
     title: "Pact Pay",
-    body: "Lock the payment before the work begins. Funds release the moment the client confirms delivery — no chasing, no ghosting.",
+    body: "Lock the bag before the work starts. She releases the moment the client says go — no chasing, no ghosting, no awkward voice notes.",
     rows: [
       ["Escrow", "Milestone-based"],
       ["Rail", "Paystack"],
@@ -15,9 +15,9 @@ const products = [
   {
     id: "bet",
     num: "II.",
-    kicker: "For friend groups",
+    kicker: "For the group chat",
     title: "Pact Bet",
-    body: "Turn the group-chat argument into a real stake. Dares, predictions, and Saturday matches — settled in the chat the bet was made in.",
+    body: "Put your money where your group chat is. Dares, predictions, Saturday matches — she keeps score so you don’t have to.",
     rows: [
       ["Dares", "Friend-arbitrated"],
       ["Predictions", "Open-book"],
@@ -34,7 +34,7 @@ export function Products() {
         <h2 className="font-display text-5xl md:text-7xl text-ink">
           Two instruments.
           <br />
-          <span className="italic">One promise.</span>
+          <span className="italic">One firm handshake.</span>
         </h2>
         <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/45">
           § 02 — Products
