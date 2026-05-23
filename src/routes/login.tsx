@@ -3,9 +3,16 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+function safeRedirect(raw: unknown, fallback = "/admin"): string {
+  if (typeof raw !== "string") return fallback;
+  // Must be a relative path starting with "/" and not "//" (protocol-relative)
+  if (!/^\/[^/]/.test(raw)) return fallback;
+  return raw;
+}
+
 export const Route = createFileRoute("/login")({
   validateSearch: (s: Record<string, unknown>) => ({
-    redirect: typeof s.redirect === "string" ? s.redirect : "/admin",
+    redirect: safeRedirect(s.redirect),
   }),
   beforeLoad: async ({ search }) => {
     if (typeof window === "undefined") return;
@@ -14,6 +21,7 @@ export const Route = createFileRoute("/login")({
   },
   component: LoginPage,
 });
+
 
 function LoginPage() {
   const navigate = useNavigate();
