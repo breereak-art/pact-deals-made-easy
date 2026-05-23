@@ -36,7 +36,10 @@
   --color-ink: var(--ink);
   --color-parchment: var(--parchment);
   --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-sage-mist: var(--sage-mist);
   --color-lavender: var(--lavender);
+  --color-sky: var(--sky);
   --color-sand: var(--sand);
 
   --font-display: "Instrument Serif", ui-serif, Georgia, serif;
