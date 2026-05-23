@@ -59,7 +59,7 @@ function LoginPage() {
     setBusy(true);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: window.location.origin + search.redirect },
+      options: { redirectTo: new URL(search.redirect, window.location.origin).href },
     });
     if (error) {
       toast.error(error.message);
