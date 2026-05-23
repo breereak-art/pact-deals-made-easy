@@ -29,8 +29,20 @@ export const trackEvent = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
+const contactSchema = z
+  .string()
+  .trim()
+  .min(3)
+  .max(255)
+  .refine(
+    (v) =>
+      z.string().email().safeParse(v).success ||
+      /^\+?[1-9]\d{6,14}$/.test(v.replace(/[\s-]/g, "")),
+    { message: "Enter a valid email or phone number" },
+  );
+
 const waitlistSchema = z.object({
-  contact: z.string().min(3).max(255),
+  contact: contactSchema,
   source: z.string().min(1).max(64).optional(),
   referrer: z.string().max(2048).nullable().optional(),
   userAgent: z.string().max(1024).nullable().optional(),
