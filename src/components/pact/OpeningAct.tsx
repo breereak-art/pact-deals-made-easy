@@ -80,7 +80,7 @@ export function OpeningAct() {
     <section
       id="top"
       ref={ref}
-      className="relative h-[450vh]"
+      className="relative h-[750vh]"
       aria-label="Meet Pact — she holds the stakes"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden text-ink">
