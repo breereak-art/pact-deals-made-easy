@@ -208,7 +208,7 @@ export function OpeningAct() {
         {/* Scroll cue — fades as soon as dissolve begins */}
         <div
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-[10px] font-mono uppercase tracking-[0.28em] text-ink/55"
-          style={{ opacity: Math.max(0, 1 - p * 8) }}
+          style={{ opacity: Math.max(0, 1 - p * 4) }}
         >
           <span>Scroll</span>
           <span className="grid grid-cols-3 gap-[3px] size-5">
