@@ -34,16 +34,16 @@ export function OpeningAct() {
   const ease = (t: number) => 1 - Math.pow(1 - t, 3);
 
   // Headline
-  const headlineOut = smoothstep(0.05, 0.22, p);
+  const headlineOut = smoothstep(0.08, 0.18, p);
   const headlineOpacity = 1 - headlineOut;
   const headlineY = -p * 220;
   const headlineBlur = headlineOut * 8;
   const headlineScale = 1 - headlineOut * 0.06;
 
   // Phone enter / dwell / exit
-  const enter = smoothstep(0.18, 0.32, p);
-  const dwell = smoothstep(0.32, 0.75, p);
-  const exit = smoothstep(0.75, 1.0, p);
+  const enter = smoothstep(0.15, 0.28, p);
+  const dwell = smoothstep(0.28, 0.78, p);
+  const exit = smoothstep(0.85, 1.0, p);
 
   const enterEased = ease(enter);
   const scale = 0.35 + enterEased * 0.65 + exit * 1.4; // 0.35 → 1 → 2.4
@@ -58,9 +58,9 @@ export function OpeningAct() {
   // Chat messages
   const messages = [
     { from: "me", text: "yo @pact, jaden owes me 20k from the bet 😤", delay: 0.0 },
-    { from: "pact", text: "lol I saw. want me to put a lock on it?", delay: 0.18 },
-    { from: "me", text: "yes please. before he 'forgets' again", delay: 0.36 },
-    { from: "pact", text: "done. ₦20k locked from @jaden. release Friday 6pm.", delay: 0.54 },
+    { from: "pact", text: "lol I saw. want me to put a lock on it?", delay: 0.15 },
+    { from: "me", text: "yes please. before he 'forgets' again", delay: 0.32 },
+    { from: "pact", text: "done. ₦20k locked from @jaden. release Friday 6pm.", delay: 0.52 },
     { from: "pact", text: "and yes, I'll remind him every morning until then.", delay: 0.72 },
   ];
 
@@ -80,7 +80,7 @@ export function OpeningAct() {
     <section
       id="top"
       ref={ref}
-      className="relative h-[450vh]"
+      className="relative h-[750vh]"
       aria-label="Meet Pact — she holds the stakes"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden text-ink">
@@ -208,7 +208,7 @@ export function OpeningAct() {
         {/* Scroll cue — fades as soon as dissolve begins */}
         <div
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-[10px] font-mono uppercase tracking-[0.28em] text-ink/55"
-          style={{ opacity: Math.max(0, 1 - p * 8) }}
+          style={{ opacity: Math.max(0, 1 - p * 4) }}
         >
           <span>Scroll</span>
           <span className="grid grid-cols-3 gap-[3px] size-5">
@@ -307,7 +307,7 @@ export function OpeningAct() {
 
                   <div className="mt-4 flex-1 flex flex-col gap-2 overflow-hidden">
                     {messages.map((m, i) => {
-                      const lp = Math.max(0, Math.min(1, (dwell - m.delay) * 6));
+                      const lp = Math.max(0, Math.min(1, (dwell - m.delay) * 3.5));
                       return (
                         <div
                           key={i}
