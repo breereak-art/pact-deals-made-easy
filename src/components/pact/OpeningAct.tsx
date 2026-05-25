@@ -307,7 +307,7 @@ export function OpeningAct() {
 
                   <div className="mt-4 flex-1 flex flex-col gap-2 overflow-hidden">
                     {messages.map((m, i) => {
-                      const lp = Math.max(0, Math.min(1, (dwell - m.delay) * 6));
+                      const lp = Math.max(0, Math.min(1, (dwell - m.delay) * 3.5));
                       return (
                         <div
                           key={i}
