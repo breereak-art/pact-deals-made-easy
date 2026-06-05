@@ -31,9 +31,15 @@ function AdminShell() {
   return (
     <div className="min-h-screen bg-parchment">
       <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-display text-lg font-extrabold uppercase tracking-tight text-ink">
-          Pact <span className="text-ink/40">/ admin</span>
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link to="/" className="font-display text-lg font-extrabold uppercase tracking-tight text-ink">
+            Pact <span className="text-ink/40">/ admin</span>
+          </Link>
+          <nav className="flex gap-4 text-xs uppercase tracking-widest text-ink/60">
+            <Link to="/admin" className="hover:text-ink" activeProps={{ className: "text-ink" }}>Metrics</Link>
+            <Link to="/admin/pacts" className="hover:text-ink" activeProps={{ className: "text-ink" }}>Pacts</Link>
+          </nav>
+        </div>
         <button onClick={signOut} className="text-xs uppercase tracking-widest text-ink/60 hover:text-ink">
           Sign out
         </button>
