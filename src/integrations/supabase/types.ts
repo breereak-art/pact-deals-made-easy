@@ -47,6 +47,72 @@ export type Database = {
         }
         Relationships: []
       }
+      pacts: {
+        Row: {
+          accepted_at: string | null
+          created_at: string
+          description: string
+          id: string
+          opponent_handle: string | null
+          opponent_name: string | null
+          proposer_handle: string
+          proposer_name: string | null
+          raw_message: string | null
+          settled_at: string | null
+          short_id: string
+          source: string
+          space_id: string | null
+          stake_amount: number
+          stake_currency: string
+          status: Database["public"]["Enums"]["pact_status"]
+          thread_id: string | null
+          updated_at: string
+          winner_handle: string | null
+        }
+        Insert: {
+          accepted_at?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          opponent_handle?: string | null
+          opponent_name?: string | null
+          proposer_handle: string
+          proposer_name?: string | null
+          raw_message?: string | null
+          settled_at?: string | null
+          short_id?: string
+          source?: string
+          space_id?: string | null
+          stake_amount: number
+          stake_currency?: string
+          status?: Database["public"]["Enums"]["pact_status"]
+          thread_id?: string | null
+          updated_at?: string
+          winner_handle?: string | null
+        }
+        Update: {
+          accepted_at?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          opponent_handle?: string | null
+          opponent_name?: string | null
+          proposer_handle?: string
+          proposer_name?: string | null
+          raw_message?: string | null
+          settled_at?: string | null
+          short_id?: string
+          source?: string
+          space_id?: string | null
+          stake_amount?: number
+          stake_currency?: string
+          status?: Database["public"]["Enums"]["pact_status"]
+          thread_id?: string | null
+          updated_at?: string
+          winner_handle?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -110,6 +176,12 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      pact_status:
+        | "proposed"
+        | "accepted"
+        | "settled"
+        | "disputed"
+        | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -238,6 +310,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      pact_status: ["proposed", "accepted", "settled", "disputed", "cancelled"],
     },
   },
 } as const
