@@ -14,6 +14,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminAdminRouteImport } from './routes/_admin/admin'
+import { Route as AdminAdminPactsRouteImport } from './routes/_admin/admin.pacts'
 import { Route as ApiPublicSpectrumWebhookRouteImport } from './routes/api/public/spectrum/webhook'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -40,6 +41,11 @@ const AdminAdminRoute = AdminAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminAdminPactsRoute = AdminAdminPactsRouteImport.update({
+  id: '/pacts',
+  path: '/pacts',
+  getParentRoute: () => AdminAdminRoute,
+} as any)
 const ApiPublicSpectrumWebhookRoute =
   ApiPublicSpectrumWebhookRouteImport.update({
     id: '/api/public/spectrum/webhook',
@@ -51,14 +57,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/admin': typeof AdminAdminRoute
+  '/admin': typeof AdminAdminRouteWithChildren
+  '/admin/pacts': typeof AdminAdminPactsRoute
   '/api/public/spectrum/webhook': typeof ApiPublicSpectrumWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/admin': typeof AdminAdminRoute
+  '/admin': typeof AdminAdminRouteWithChildren
+  '/admin/pacts': typeof AdminAdminPactsRoute
   '/api/public/spectrum/webhook': typeof ApiPublicSpectrumWebhookRoute
 }
 export interface FileRoutesById {
@@ -67,7 +75,8 @@ export interface FileRoutesById {
   '/_admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/_admin/admin': typeof AdminAdminRoute
+  '/_admin/admin': typeof AdminAdminRouteWithChildren
+  '/_admin/admin/pacts': typeof AdminAdminPactsRoute
   '/api/public/spectrum/webhook': typeof ApiPublicSpectrumWebhookRoute
 }
 export interface FileRouteTypes {
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/sitemap.xml'
     | '/admin'
+    | '/admin/pacts'
     | '/api/public/spectrum/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/sitemap.xml'
     | '/admin'
+    | '/admin/pacts'
     | '/api/public/spectrum/webhook'
   id:
     | '__root__'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/sitemap.xml'
     | '/_admin/admin'
+    | '/_admin/admin/pacts'
     | '/api/public/spectrum/webhook'
   fileRoutesById: FileRoutesById
 }
@@ -140,6 +152,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/_admin/admin/pacts': {
+      id: '/_admin/admin/pacts'
+      path: '/pacts'
+      fullPath: '/admin/pacts'
+      preLoaderRoute: typeof AdminAdminPactsRouteImport
+      parentRoute: typeof AdminAdminRoute
+    }
     '/api/public/spectrum/webhook': {
       id: '/api/public/spectrum/webhook'
       path: '/api/public/spectrum/webhook'
@@ -150,12 +169,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminAdminRouteChildren {
+  AdminAdminPactsRoute: typeof AdminAdminPactsRoute
+}
+
+const AdminAdminRouteChildren: AdminAdminRouteChildren = {
+  AdminAdminPactsRoute: AdminAdminPactsRoute,
+}
+
+const AdminAdminRouteWithChildren = AdminAdminRoute._addFileChildren(
+  AdminAdminRouteChildren,
+)
+
 interface AdminRouteChildren {
-  AdminAdminRoute: typeof AdminAdminRoute
+  AdminAdminRoute: typeof AdminAdminRouteWithChildren
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
-  AdminAdminRoute: AdminAdminRoute,
+  AdminAdminRoute: AdminAdminRouteWithChildren,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
@@ -170,3 +201,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
