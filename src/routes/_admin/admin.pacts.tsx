@@ -20,11 +20,29 @@ const statusColor: Record<string, string> = {
 
 function PactsPage() {
   const fetchPacts = useServerFn(listPacts);
+  const simulate = useServerFn(simulateSpectrumMessage);
+  const [simText, setSimText] = useState("/pact 1000 @test first bet");
+  const [simResult, setSimResult] = useState<string | null>(null);
+  const [simBusy, setSimBusy] = useState(false);
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["admin-pacts"],
     queryFn: () => fetchPacts(),
     refetchInterval: 5_000,
   });
+
+  async function runSim() {
+    setSimBusy(true);
+    setSimResult(null);
+    try {
+      const res = await simulate({ data: { text: simText } });
+      setSimResult(`✓ ${res.status} — ${res.response}`);
+      refetch();
+    } catch (e: any) {
+      setSimResult(`✗ ${e?.message ?? "failed"}`);
+    } finally {
+      setSimBusy(false);
+    }
+  }
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
