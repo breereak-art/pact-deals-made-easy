@@ -64,6 +64,26 @@ function PactsPage() {
       {isLoading && <p className="text-ink/50 text-sm">Loading…</p>}
       {error && <p className="text-rose-700 text-sm">Failed: {(error as Error).message}</p>}
 
+      <div className="border border-ink/10 rounded-lg p-4 bg-white mb-6">
+        <p className="text-xs uppercase tracking-widest text-ink/50 mb-2">Simulate webhook</p>
+        <div className="flex gap-2">
+          <input
+            value={simText}
+            onChange={(e) => setSimText(e.target.value)}
+            className="flex-1 border border-ink/20 rounded px-3 py-2 text-sm font-mono"
+          />
+          <button
+            onClick={runSim}
+            disabled={simBusy}
+            className="bg-ink text-cream px-4 py-2 rounded text-sm disabled:opacity-50"
+          >
+            {simBusy ? "Sending…" : "Send"}
+          </button>
+        </div>
+        {simResult && <p className="text-xs text-ink/60 mt-2 font-mono">{simResult}</p>}
+      </div>
+
+
       {data && data.pacts.length === 0 && (
         <div className="border border-dashed border-ink/20 rounded-lg p-10 text-center">
           <p className="text-ink/60 text-sm mb-2">No pacts yet.</p>
